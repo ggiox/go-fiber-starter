@@ -11,7 +11,7 @@ import (
 // SetupRoutes setup router api
 func SetupRoutes(app *fiber.App) {
 	// Middleware
-	api := app.Group("/api", logger.New())
+	api := app.Group("/api/v1", logger.New())
 	api.Get("/", handler.Hello)
 
 	// Auth

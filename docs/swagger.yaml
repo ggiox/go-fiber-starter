@@ -1,4 +1,4 @@
-basePath: /
+basePath: /api/v1
 host: localhost:3000
 info:
   contact:
@@ -11,5 +11,32 @@ info:
   termsOfService: http://swagger.io/terms/
   title: Fiber Starter API
   version: "1.0"
-paths: {}
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: Verify api is running
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: pong
+          schema:
+            type: string
+        "400":
+          description: ok
+          schema:
+            type: string
+        "404":
+          description: ok
+          schema:
+            type: string
+        "500":
+          description: ok
+          schema:
+            type: string
+      summary: Api status
+      tags:
+      - status
 swagger: "2.0"

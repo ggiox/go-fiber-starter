@@ -21,16 +21,17 @@ import (
 // @license.name Apache 2.0
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 // @host localhost:3000
-// @BasePath /
+// @BasePath /api/v1
 func main() {
 	app := fiber.New()
-
-	app.Get("/swagger/*", swagger.HandlerDefault)
 
 	app.Use(cors.New())
 
 	database.ConnectDB()
 
 	router.SetupRoutes(app)
+
+	app.Get("/swagger/*", swagger.HandlerDefault)
+
 	log.Fatal(app.Listen(":3000"))
 }
