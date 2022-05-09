@@ -39,7 +39,7 @@ const docTemplate = `{
                 "summary": "Api status",
                 "responses": {
                     "200": {
-                        "description": "pong",
+                        "description": "Status equals success",
                         "schema": {
                             "type": "string"
                         }
