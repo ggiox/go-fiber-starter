@@ -7,6 +7,7 @@ import (
 	"go-fiber-starter/api/model"
 	"time"
 
+	"github.com/google/uuid"
 	"gorm.io/gorm"
 
 	"github.com/gofiber/fiber/v2"
@@ -51,10 +52,10 @@ func Login(c *fiber.Ctx) error {
 		Password string `json:"password"`
 	}
 	type UserData struct {
-		ID       uint   `json:"id"`
-		Username string `json:"username"`
-		Email    string `json:"email"`
-		Password string `json:"password"`
+		ID       uuid.UUID `json:"uuid"`
+		Username string    `json:"username"`
+		Email    string    `json:"email"`
+		Password string    `json:"password"`
 	}
 	var input LoginInput
 	var ud UserData
@@ -81,14 +82,14 @@ func Login(c *fiber.Ctx) error {
 
 	if email == nil {
 		ud = UserData{
-			ID:       user.ID,
+			ID:       user.UUID,
 			Username: user.Username,
 			Email:    user.Email,
 			Password: user.Password,
 		}
 	} else {
 		ud = UserData{
-			ID:       email.ID,
+			ID:       email.UUID,
 			Username: email.Username,
 			Email:    email.Email,
 			Password: email.Password,
